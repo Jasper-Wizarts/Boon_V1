@@ -15,7 +15,7 @@ js/vendor/            GSAP 3.12.5 + ScrollTrigger (lokaal, geen CDN). Zonder JS 
 data/projects.js      Projecten en filtercategorieën
 data/reviews.js       Reviews (nu voorbeeldteksten)
 img/projecten/        Projectfoto's in AVIF, WebP en JPG, telkens in meerdere breedtes. De .json-bestanden ernaast noteren de herkomst van elke foto (intern, .htaccess houdt ze offline)
-img/logo-boon.svg     Logo (ook inline als <symbol id="boon-logo"> bovenaan elke HTML-pagina)
+img/logo-boon.png     Logo (via <symbol id="boon-logo"> bovenaan elke HTML-pagina)
 partners/             Logo's van klanten en merken (witte versies voor de donkere achtergrond)
 fonts/                Archivo en Hanken Grotesk, zelf gehost (geen Google Fonts-verzoeken)
 robots.txt, sitemap.xml, .htaccess (compressie en caching op Apache)
@@ -77,8 +77,8 @@ var SITE_CONFIG = {
 
 ## Logo
 
-`img/logo-boon.svg` bevat het BOON-woordmerk uit het eerste ontwerpvoorstel, in vectorvorm. Het wordt ook inline gebruikt via `<symbol id="boon-logo">` bovenaan elke pagina, zodat het meteen werkt (ook lokaal) en de kleur volgt (`currentColor`).
-Wordt het logo vervangen, vervang dan het `<symbol>` in de drie HTML-bestanden (of gebruik een `<img>`).
+`img/logo-boon.png` is het oorspronkelijke BOON-logo van de klant: het embleem uit het logo van de oude site (elecboon.be), zonder de zijteksten. Het is een PNG van 325×174 px; vraag de klant het originele (vector)bestand voor een scherpere versie. Het wordt gebruikt via `<symbol id="boon-logo">` bovenaan elke pagina. Wordt het logo vervangen, pas dan het `<symbol>` in de drie HTML-bestanden aan, en de `aspect-ratio` in `css/style.css`.
+`img/favicon.png` en `img/apple-touch-icon.png` zijn uit hetzelfde embleem gemaakt.
 
 ## Kleuren en contrast
 
