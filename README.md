@@ -95,4 +95,5 @@ Alle kleuren staan als custom properties in `:root` van `css/style.css`. Rood wo
 - [ ] Privacyverklaring nagekeken
 - [ ] Map `assets/` en werkdocumenten niet mee online
 - [ ] Review-laag weg: de `<script>`-regel van `postits.js` (project `boon`) vlak voor `</head>` uit de vier HTML-bestanden schrappen
+- [ ] Map `handleiding/` (uitlegvideo post-its) weg
 # elecboon
