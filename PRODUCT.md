@@ -34,7 +34,8 @@ Contractors evaluate subcontractors on reliability, references, planning and pap
 
 - Services: algemene elektriciteitswerken, domotica en centrale sturing, data en netwerk, verlichting.
 - Contact: tel 052 44 73 66, gsm 0472 41 40 36, info@elecboon.be. Kantoor Heiendestraat 92, 9160 Lokeren. Magazijn Bouwstraat 14 C6, 9160 Lokeren (replaces Voermanstraat, Zele).
-- Project categories: Woningen, Domotica, Industrie & kantoor. Current projects: ISS (head office, about 5000 m², extended case), Woning Hertsberge, Woning Turnhout. More will follow.
+- Project categories: Projectontwikkeling (renamed from Woningen on client feedback, 2026-10-20), Domotica, Industrie & kantoor, Horeca. Current projects: ISS (head office, about 5000 m², extended case), Woning Hertsberge, Woning Turnhout, Restaurant Bonami, Kantoorgebouw (name TBC). More will follow.
+- Section rhythm: black alternates with light grey (Diensten, Contact) and white (Aanpak) on client feedback, 2026-10-20. Brand colours stay black, greys and red.
 - Copy rules: Flemish Dutch, formal "u", sentence case titles. No em dashes. No "geen X, wel Y" constructions. No comma before "en". No invented figures; unknowns are marked `[TE BEVESTIGEN: ...]`.
 - Undecided: VAT number, certifications, ISS case timing and approach details, real reviews.
 

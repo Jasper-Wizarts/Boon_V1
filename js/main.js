@@ -588,22 +588,23 @@ var SITE_CONFIG = {
     if (heroMedia) {
       // Een zwarte laag boven de foto dooft uit: de lichten gaan aan.
       // De foto zelf wordt niet geanimeerd, zodat hij meteen als geladen telt.
-      // De ledpanelen in het plafond van de foto springen aan, van achter in de gang naar voor.
-      // Coördinaten in pixels van de originele foto (1000 x 750).
+      // De lichten in de foto springen aan, van achter in de zaal naar voor.
+      // Foto en lichtpunten staan in data-lights op de hero (zie index.html):
+      // { "size": [breedte, hoogte], "vp": [x, y], "spots": [[x, y, breedte, hoogte], ...] }
+      // in pixels van de originele foto. Zonder data-lights dooft enkel de zwarte laag uit.
       var heroImg = heroMedia.querySelector("img");
-      var VP = [860, 255];
-      var PANELS = [
-        [862, 258, 30, 5], [858, 248, 40, 6], [740, 267, 30, 5], [620, 262, 30, 4], [555, 271, 30, 4],
-        [853, 238, 55, 8], [688, 253, 40, 6], [856, 224, 65, 10], [675, 235, 60, 8], [470, 265, 40, 5],
-        [392, 252, 55, 7], [850, 188, 85, 12], [612, 208, 80, 11], [280, 258, 40, 6], [280, 233, 50, 8],
-        [495, 153, 125, 22], [835, 114, 130, 20], [205, 22, 190, 40]
-      ];
+      var lights = {};
+      try { lights = JSON.parse(heroMedia.getAttribute("data-lights") || "{}"); } catch (err) { lights = {}; }
+      var IW = (lights.size || [])[0] || heroImg.getAttribute("width") || 1000;
+      var IH = (lights.size || [])[1] || heroImg.getAttribute("height") || 750;
+      var VP = lights.vp || [IW / 2, IH / 2];
+      var PANELS = lights.spots || [];
       var mapPt = function (nx, ny) {
         var r = heroMedia.getBoundingClientRect();
-        var sc = Math.max(r.width / 1000, r.height / 750);
+        var sc = Math.max(r.width / IW, r.height / IH);
         var pos = (getComputedStyle(heroImg).objectPosition || "50% 50%").split(" ");
         var px = parseFloat(pos[0]) / 100, py = parseFloat(pos[1] || pos[0]) / 100;
-        return { x: (r.width - 1000 * sc) * px + nx * sc, y: (r.height - 750 * sc) * py + ny * sc, s: sc, w: r.width, h: r.height };
+        return { x: (r.width - IW * sc) * px + nx * sc, y: (r.height - IH * sc) * py + ny * sc, s: sc, w: r.width, h: r.height };
       };
       var vp = mapPt(VP[0], VP[1]);
       var dim = el("span", { className: "hero-dim", "aria-hidden": "true" });
@@ -624,7 +625,7 @@ var SITE_CONFIG = {
       heroMedia.appendChild(glowWrap);
       var far = Math.max(Math.hypot(vp.x, vp.y), Math.hypot(vp.w - vp.x, vp.y), Math.hypot(vp.x, vp.h - vp.y), Math.hypot(vp.w - vp.x, vp.h - vp.y));
       var reach = { r: 0 };
-      var h1 = document.getElementById("hero-title");
+      var h1 = document.getElementById("hero-title") || heroMedia.parentNode.querySelector("h1");
       var tl = gsap.timeline({ defaults: { ease: ease }, onComplete: function () { dim.remove(); glowWrap.remove(); } });
       tl.set(dim, { opacity: 0.9 }, 0);
       glows.forEach(function (g, i) {
@@ -637,7 +638,7 @@ var SITE_CONFIG = {
         .set(h1, { opacity: 1 }, 0.46).set(h1, { opacity: 0.55 }, 0.6).set(h1, { opacity: 1 }, 0.66)
         .fromTo(heroBits, { y: 20 }, { y: 0, duration: 0.9, stagger: 0.08, clearProps: "transform" }, 0.1);
       // Lichte parallax bij het wegscrollen
-      gsap.to(heroMedia, { yPercent: 12, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+      gsap.to(heroMedia, { yPercent: 12, ease: "none", scrollTrigger: { trigger: heroMedia.parentNode, start: "top top", end: "bottom top", scrub: true } });
     }
 
     // 2. Titels en blokken komen binnen

@@ -7,6 +7,7 @@ Statische site voor Elektriciteitswerken Boon (Boon bv, Lokeren). HTML, CSS en v
 ```
 index.html            One-pager: hero, diensten, waarom Boon, projecten, reviews, klanten/merken, over ons, contact
 projecten/iss.html    Uitgewerkte case ISS
+projecten/bonami.html Case restaurant Bonami (nog grotendeels [TE BEVESTIGEN])
 privacy.html          Privacyverklaring (ontwerptekst, laten nakijken)
 css/style.css         Alle stijlen; kleuren, typografie en spacing als custom properties bovenaan
 css/fonts-file.css    Dezelfde fonts ingebed, enkel geladen als een pagina lokaal (file://) geopend wordt. Online niet gebruikt. Opnieuw maken als de fonts wijzigen
@@ -15,14 +16,15 @@ js/vendor/            GSAP 3.12.5 + ScrollTrigger (lokaal, geen CDN). Zonder JS 
 data/projects.js      Projecten en filtercategorieën
 data/reviews.js       Reviews (nu voorbeeldteksten)
 img/projecten/        Projectfoto's in AVIF, WebP en JPG, telkens in meerdere breedtes. De .json-bestanden ernaast noteren de herkomst van elke foto (intern, .htaccess houdt ze offline)
-img/logo-boon.png     Logo (via <symbol id="boon-logo"> bovenaan elke HTML-pagina)
+img/logo-boon.svg     Logo (vector, inline als <symbol id="boon-logo"> bovenaan elke HTML-pagina)
+img/logo-boon.png     Hetzelfde logo als PNG (600 px), voor zoekmachines (structured data)
 partners/             Logo's van klanten en merken (witte versies voor de donkere achtergrond)
 fonts/                Archivo en Hanken Grotesk, zelf gehost (geen Google Fonts-verzoeken)
 robots.txt, sitemap.xml, .htaccess (compressie en caching op Apache)
 assets/               Aangeleverde bronbestanden. Niet nodig online, mag weg bij publicatie
 ```
 
-Header en footer staan in elk van de drie HTML-bestanden. Pas een wijziging daar dus in alle drie toe.
+Header en footer staan in elk van de vier HTML-bestanden. Pas een wijziging daar dus in alle vier toe.
 
 Diensten staan rechtstreeks in `index.html` (sectie "Diensten: schakelbord"): per dienst een knop in de lijst en een paneel met foto, tekst en labels.
 
@@ -37,7 +39,7 @@ Diensten staan rechtstreeks in `index.html` (sectie "Diensten: schakelbord"): pe
   id: "woning-gent",
   title: "Woning Gent",
   location: "Gent",
-  categories: ["woningen", "domotica"],      // woningen | domotica | industrie-kantoor
+  categories: ["projectontwikkeling", "domotica"],  // projectontwikkeling | domotica | industrie-kantoor | horeca
   summary: "Korte tekst van één of twee zinnen.",
   specs: ["Nieuwbouw", "Domotica"],          // korte kerngegevens, optioneel
   image: { name: "woning-gent", widths: [480, 800, 1200], w: 1200, h: 900, alt: "Beschrijving van de foto" },
@@ -77,7 +79,7 @@ var SITE_CONFIG = {
 
 ## Logo
 
-`img/logo-boon.png` is het oorspronkelijke BOON-logo van de klant: het embleem uit het logo van de oude site (elecboon.be), zonder de zijteksten. Het is een PNG van 325×174 px; vraag de klant het originele (vector)bestand voor een scherpere versie. Het wordt gebruikt via `<symbol id="boon-logo">` bovenaan elke pagina. Wordt het logo vervangen, pas dan het `<symbol>` in de drie HTML-bestanden aan, en de `aspect-ratio` in `css/style.css`.
+`img/logo-boon.svg` is het BOON-logo van de klant (aangeleverd als `logo-boon-zwart.svg`: grijs embleem, zwarte letters, rode pijl). De paden staan inline in `<symbol id="boon-logo">` bovenaan elke pagina, met de kleuren als `fill`. Wordt het logo vervangen, pas dan het `<symbol>` in de vier HTML-bestanden aan, en de `aspect-ratio` (nu 57.14 / 36.61) in `css/style.css`.
 `img/favicon.png` en `img/apple-touch-icon.png` zijn uit hetzelfde embleem gemaakt.
 
 ## Kleuren en contrast

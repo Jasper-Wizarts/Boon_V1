@@ -201,7 +201,7 @@ ul, ol { margin: 0; padding: 0; }
 
 .header-inner { display: flex; align-items: center; gap: var(--s-4); height: var(--header-h); }
 .brand { display: inline-flex; color: var(--text); text-decoration: none; flex: none; }
-.brand svg { width: 88px; height: auto; aspect-ratio: 325 / 174; }
+.brand svg { width: 76px; height: auto; aspect-ratio: 57.14 / 36.61; }
 .has-hero-logo .site-header .brand { opacity: 0; transform: translateY(-6px); pointer-events: none; transition: opacity 220ms ease, transform 220ms var(--ease-out); }
 .has-hero-logo .site-header.show-brand .brand,
 body.menu-open .site-header .brand { opacity: 1; transform: none; pointer-events: auto; }
@@ -267,7 +267,7 @@ body.menu-open .site-header .brand { opacity: 1; transform: none; pointer-events
   .header-cta { display: inline-flex; }
   .mobile-only, .mobile-menu { display: none !important; }
   .header-actions { margin-left: var(--s-4); gap: var(--s-5); }
-  .brand svg { width: 100px; }
+  .brand svg { width: 84px; }
 }
 
 /* ---------- 1. Hero: volle foto, lichten gaan aan ---------- */
@@ -279,7 +279,7 @@ body.menu-open .site-header .brand { opacity: 1; transform: none; pointer-events
 }
 .hero-media { position: absolute; inset: 0; z-index: -2; }
 .hero-dim { position: absolute; inset: 0; background: #0b0b0b; pointer-events: none; }
-.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 60% 40%; }
+.hero-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
 .hero::before {
   /* scrim: links zwart voor de tekst, rechts het licht laten spreken */
   content: ""; position: absolute; inset: 0; z-index: -1;
@@ -293,12 +293,19 @@ body.menu-open .site-header .brand { opacity: 1; transform: none; pointer-events
     background:
       linear-gradient(0deg, rgba(11,11,11,0.98) 0%, rgba(11,11,11,0.86) 48%, rgba(11,11,11,0.3) 78%, rgba(11,11,11,0.55) 100%);
   }
-  .hero-media img { object-position: 62% 30%; }
+  .hero-media img { object-position: 54% 40%; }
 }
 
+/* Desktop: de foto rechts, zodat de verlichte zaal naast de titel staat; links vloeit hij in het zwart */
+@media (min-width: 900px) {
+  .hero .hero-media {
+    left: 30%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 28%); mask-image: linear-gradient(90deg, transparent 0, #000 28%);
+  }
+}
 .hero-inner { width: 100%; display: grid; gap: var(--s-6); }
 .hero-logo { color: var(--text); }
-.hero-logo svg { width: clamp(150px, 19vw, 260px); height: auto; aspect-ratio: 325 / 174; }
+.hero-logo svg { width: clamp(150px, 19vw, 260px); height: auto; aspect-ratio: 57.14 / 36.61; }
 .hero h1 { max-width: 13ch; margin-top: clamp(1.5rem, 3vw, 2.5rem); }
 .hero .lead { margin-top: var(--s-5); max-width: 44ch; color: #d0ccc6; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-6); }
@@ -596,7 +603,7 @@ body.menu-open .site-header .brand { opacity: 1; transform: none; pointer-events
 .site-footer a { text-decoration: none; }
 .site-footer a:hover { text-decoration: underline; }
 .footer-col ul { list-style: none; display: grid; gap: var(--s-1); }
-.footer-brand svg { width: 112px; height: auto; aspect-ratio: 325 / 174; color: var(--text); margin-bottom: var(--s-4); }
+.footer-brand svg { width: 112px; height: auto; aspect-ratio: 57.14 / 36.61; color: var(--text); margin-bottom: var(--s-4); }
 .footer-brand p { max-width: 34ch; }
 .footer-legal { margin-top: var(--s-7); padding-top: var(--s-4); border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-5); color: var(--text-3); }
 @media (min-width: 768px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; } }
@@ -865,7 +872,7 @@ html:not(.js) .form-step + .form-step { margin-top: var(--s-7); }
 
 /* Keuzetegels voor het soort project */
 .choice-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-3); }
-@media (max-width: 639px) { .choice-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; } }
+@media (max-width: 639px) { .choice-grid > :first-child { grid-column: 1 / -1; } }
 @media (min-width: 640px) { .choice-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .choice {
   position: relative; display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: var(--s-3); row-gap: 4px; align-items: center;
@@ -876,7 +883,7 @@ html:not(.js) .form-step + .form-step { margin-top: var(--s-7); }
 .choice:active { transform: scale(0.98); }
 .choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .choice .dot { grid-row: 1; width: 12px; height: 12px; }
-.choice-title { grid-column: 2; font: 700 1rem/1.2 var(--f-display); font-stretch: 105%; color: var(--text); }
+.choice-title { grid-column: 2; font: 700 1rem/1.2 var(--f-display); font-stretch: 105%; color: var(--text); min-width: 0; overflow-wrap: break-word; hyphens: auto; }
 .choice-sub { grid-column: 1 / -1; font-size: 0.8125rem; line-height: 1.35; color: var(--text-3); }
 @media (hover: hover) and (pointer: fine) { .choice:hover { border-color: var(--text-2); background: var(--graphite-2); } }
 .choice:has(input:checked) { border-color: var(--red-on-dark); background: rgba(255, 97, 89, 0.08); }
@@ -996,3 +1003,51 @@ html:not(.js) .step-nav { border-top: 0; }
 .circuit-on .circuit-track { height: min(calc(100svh - var(--header-h) - 3.5rem), 760px); }
 #reviews { padding-bottom: clamp(2.5rem, 4vw, 3.5rem); }
 .circuit-on .circuit-track { height: min(calc(100svh - var(--header-h) - 3.5rem), 940px); }
+
+/* ==========================================================================
+   Lichte secties: zwart afwisselen met lichtgrijs en wit voor meer frisheid.
+   .theme-light = lichtgrijs, .theme-white = wit. Ze zetten de kleurvariabelen
+   om, zodat de componenten in die sectie vanzelf mee wisselen.
+   ========================================================================== */
+.theme-light, .theme-white {
+  --black: #eeede9;
+  --graphite-1: #f8f7f5;
+  --graphite-2: #e4e2dd;
+  --graphite-3: #d8d5cf;
+  --line: #d3d0ca;
+  --line-strong: #b9b5ae;
+  --field-border: #87827b;   /* 3.4:1 */
+  --text: #111111;
+  --text-2: #45423e;         /* 8.4:1 op lichtgrijs */
+  --text-3: #66625c;         /* 5:1 op lichtgrijs */
+  --red-on-dark: #c41f26;    /* rood als tekst op licht, 5:1 */
+  --red-glow: rgba(212, 42, 47, 0.35);
+  color-scheme: light;
+  background: var(--black);
+  color: var(--text);
+}
+.theme-white { --black: #ffffff; --graphite-1: #ffffff; --graphite-2: #f1f0ed; --text-3: #6b675f; }
+.theme-light .btn-ghost, .theme-white .btn-ghost { --btn-bg: transparent; }
+.theme-light .tbc, .theme-white .tbc { color: #6b4500; background: rgba(255, 190, 60, 0.22); outline-color: rgba(150, 95, 0, 0.55); }
+
+/* Formulier als witte kaart op lichtgrijs */
+.theme-light .quote-form { background: #fff; border-color: var(--line); box-shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.28); }
+.theme-light .quote-form .field input, .theme-light .quote-form .field textarea { background-color: var(--black); }
+.theme-light .quote-form .field input:focus-visible, .theme-light .quote-form .field textarea:focus-visible { background-color: #fff; }
+.theme-light .choice:has(input:checked) { background: rgba(212, 42, 47, 0.06); }
+
+/* Het verdeelbord met de contactgegevens blijft een donker toestel */
+.theme-light .board {
+  --graphite-1: #131313; --graphite-2: #1a1a1a; --line: #2a2a2a; --line-strong: #3d3b39; --field-border: #75716c;
+  --text: #f3f1ed; --text-3: #938f89; --red-on-dark: #ff6159; --red-glow: rgba(255, 70, 60, 0.55);
+  color: var(--text); color-scheme: dark;
+}
+
+/* Aanpak op wit: de lijn mag zachter gloeien */
+.theme-white .process-fill { box-shadow: 0 0 8px var(--red-glow); }
+.cta-band.theme-light { border-top: 0; }
+
+/* Projecten: vanaf het vierde project twee per rij, zodat de rij vol is */
+@media (min-width: 1100px) {
+  .projects:not(.is-filtered) .project:nth-child(n+4) { grid-column: span 6; }
+}
