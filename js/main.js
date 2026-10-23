@@ -1,3 +1,4 @@
+/* (c) 2026 Wizarts BV, wizarts.be. Alle rechten voorbehouden. wzts-jidka0ex5q */
 /* ==========================================================================
    Elektriciteitswerken Boon, site-script
    ========================================================================== */

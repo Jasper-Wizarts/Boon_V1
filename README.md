@@ -1,5 +1,7 @@
 # elecboon.be
 
+> (c) 2026 Wizarts BV. Alle rechten voorbehouden, zie [LICENSE](LICENSE).
+
 Statische site voor Elektriciteitswerken Boon (Boon bv, Lokeren). HTML, CSS en vanilla JS: geen framework, geen build-stap. Openen kan rechtstreeks (`index.html`) of via een lokale server, bv. `python3 -m http.server`.
 
 ## Structuur
